@@ -24,4 +24,4 @@ const crunchOMeter = async (location: string): Promise<number | void> => {
   }
 }
 
-module.exports = crunchOMeter;
+export default crunchOMeter;
