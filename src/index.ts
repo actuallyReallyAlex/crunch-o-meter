@@ -1,13 +1,16 @@
 import cheerio from 'cheerio';
+import { Options } from './types';
 
 /**
  * Checks the Crunch-O-Meter at a particular Crunch Fitness location.
- * @param {String} location -> Location to check. This can be found by visiting https://www.crunch.com/locations/
+ * @param {Options} options -> Options object. 
  * @returns {Number} -> A percentage representing the current occupancy at that location.
  */
-const crunchOMeter = async (location: string): Promise<number | void> => {
+const crunchOMeter = async (options: Options): Promise<number | void> => {
   try {
-    const response = await fetch(`https://www.crunch.com/locations/${location}`);
+    const { location } = options;
+
+    const response = await fetch(`https://www.crunch.com/locations/${location}`, { mode: 'no-cors' });
     const data = await response.text();
     const $ = cheerio.load(data);
 

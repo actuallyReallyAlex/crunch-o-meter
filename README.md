@@ -6,5 +6,5 @@ A way to programmatically check Crunch Fitness' Crunch-O-Meter.
 ```js
 import crunchOMeter from 'crunch-o-meter';
 
-const occupancy = await crunchOMeter('gymLocation'); // 0.25
+const occupancy = await crunchOMeter({ location: 'gymLocation' }); // 0.25
 ```
