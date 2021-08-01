@@ -1,8 +1,9 @@
 {
   "name": "crunch-o-meter",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A way to programmatically check Crunch Fitness' Crunch-O-Meter.",
   "main": "build/index.js",
+  "files": ["LICENSE", "README.md", "build", "package.json"],
 
   "scripts": {
     "build": "rimraf build && tsc",

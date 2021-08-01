@@ -1,6 +1,11 @@
 import cheerio from 'cheerio';
 import nfetch from 'node-fetch';
 
+/**
+ * Checks the Crunch-O-Meter at a particular Crunch Fitness location.
+ * @param {String} location -> Location to check. This can be found by visiting https://www.crunch.com/locations/
+ * @returns {Number} -> A percentage representing the current occupancy at that location.
+ */
 const crunchOMeter = async (location: string): Promise<number | void> => {
   try {
     const response = await nfetch(`https://www.crunch.com/locations/${location}`);
