@@ -1,5 +1,4 @@
 import cheerio from 'cheerio';
-import nfetch from 'node-fetch';
 
 /**
  * Checks the Crunch-O-Meter at a particular Crunch Fitness location.
@@ -8,7 +7,7 @@ import nfetch from 'node-fetch';
  */
 const crunchOMeter = async (location: string): Promise<number | void> => {
   try {
-    const response = await nfetch(`https://www.crunch.com/locations/${location}`);
+    const response = await fetch(`https://www.crunch.com/locations/${location}`);
     const data = await response.text();
     const $ = cheerio.load(data);
 
