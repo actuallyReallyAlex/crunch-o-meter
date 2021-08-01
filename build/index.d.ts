@@ -1,7 +1,8 @@
+import { Options } from './types';
 /**
  * Checks the Crunch-O-Meter at a particular Crunch Fitness location.
- * @param {String} location -> Location to check. This can be found by visiting https://www.crunch.com/locations/
+ * @param {Options} options -> Options object.
  * @returns {Number} -> A percentage representing the current occupancy at that location.
  */
-declare const crunchOMeter: (location: string) => Promise<number | void>;
+declare const crunchOMeter: (options: Options) => Promise<number | void>;
 export default crunchOMeter;

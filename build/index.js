@@ -42,17 +42,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var cheerio_1 = __importDefault(require("cheerio"));
 /**
  * Checks the Crunch-O-Meter at a particular Crunch Fitness location.
- * @param {String} location -> Location to check. This can be found by visiting https://www.crunch.com/locations/
+ * @param {Options} options -> Options object.
  * @returns {Number} -> A percentage representing the current occupancy at that location.
  */
-var crunchOMeter = function (location) { return __awaiter(void 0, void 0, void 0, function () {
-    var response, data, $, percentage, occupancy, error_1;
+var crunchOMeter = function (options) { return __awaiter(void 0, void 0, void 0, function () {
+    var location_1, response, data, $, percentage, occupancy, error_1;
     var _a;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _b.trys.push([0, 3, , 4]);
-                return [4 /*yield*/, fetch("https://www.crunch.com/locations/" + location)];
+                location_1 = options.location;
+                return [4 /*yield*/, fetch("https://www.crunch.com/locations/" + location_1, { mode: 'no-cors' })];
             case 1:
                 response = _b.sent();
                 return [4 /*yield*/, response.text()];
