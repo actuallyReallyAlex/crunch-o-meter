@@ -16,6 +16,8 @@ const crunchOMeter = async (options: Options): Promise<number | void> => {
 
     const percentage = $('#occupancy-info .progress-bar-wrapper .progress-background div').attr('style')?.split(' ')[1];
     if (!percentage) {
+      console.log({ response });
+      console.log({ data });
       throw new Error('Error parsing document');
     }
     const occupancy = parseFloat(percentage) / 100;

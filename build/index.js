@@ -62,6 +62,8 @@ var crunchOMeter = function (options) { return __awaiter(void 0, void 0, void 0,
                 $ = cheerio_1.default.load(data);
                 percentage = (_a = $('#occupancy-info .progress-bar-wrapper .progress-background div').attr('style')) === null || _a === void 0 ? void 0 : _a.split(' ')[1];
                 if (!percentage) {
+                    console.log({ response: response });
+                    console.log({ data: data });
                     throw new Error('Error parsing document');
                 }
                 occupancy = parseFloat(percentage) / 100;
