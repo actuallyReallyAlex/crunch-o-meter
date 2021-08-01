@@ -41,6 +41,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var cheerio_1 = __importDefault(require("cheerio"));
 var node_fetch_1 = __importDefault(require("node-fetch"));
+/**
+ * Checks the Crunch-O-Meter at a particular Crunch Fitness location.
+ * @param {String} location -> Location to check. This can be found by visiting https://www.crunch.com/locations/
+ * @returns {Number} -> A percentage representing the current occupancy at that location.
+ */
 var crunchOMeter = function (location) { return __awaiter(void 0, void 0, void 0, function () {
     var response, data, $, percentage, occupancy, error_1;
     var _a;

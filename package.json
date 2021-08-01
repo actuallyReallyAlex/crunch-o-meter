@@ -1,8 +1,9 @@
 {
   "name": "crunch-o-meter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A way to programmatically check Crunch Fitness' Crunch-O-Meter.",
   "main": "build/index.js",
+  "types": "build/index.d.ts",
   "files": ["LICENSE", "README.md", "build", "package.json"],
 
   "scripts": {
