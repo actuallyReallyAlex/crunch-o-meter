@@ -45,35 +45,40 @@ var cheerio_1 = __importDefault(require("cheerio"));
  * @param {Options} options -> Options object.
  * @returns {Number} -> A percentage representing the current occupancy at that location.
  */
-var crunchOMeter = function (options) { return __awaiter(void 0, void 0, void 0, function () {
-    var location_1, response, data, $, percentage, occupancy, error_1;
-    var _a;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _b.trys.push([0, 3, , 4]);
-                location_1 = options.location;
-                return [4 /*yield*/, fetch("https://www.crunch.com/locations/" + location_1, { mode: 'no-cors' })];
-            case 1:
-                response = _b.sent();
-                return [4 /*yield*/, response.text()];
-            case 2:
-                data = _b.sent();
-                $ = cheerio_1.default.load(data);
-                percentage = (_a = $('#occupancy-info .progress-bar-wrapper .progress-background div').attr('style')) === null || _a === void 0 ? void 0 : _a.split(' ')[1];
-                if (!percentage) {
-                    console.log({ response: response });
-                    console.log({ data: data });
-                    throw new Error('Error parsing document');
-                }
-                occupancy = parseFloat(percentage) / 100;
-                return [2 /*return*/, occupancy];
-            case 3:
-                error_1 = _b.sent();
-                console.error(error_1);
-                return [2 /*return*/];
-            case 4: return [2 /*return*/];
-        }
+var crunchOMeter = function (options) {
+    if (options === void 0) { options = { corsProxy: false, location: 'unknown' }; }
+    return __awaiter(void 0, void 0, void 0, function () {
+        var corsProxy, location_1, url, response, data, $, percentage, occupancy, error_1;
+        var _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _b.trys.push([0, 3, , 4]);
+                    corsProxy = options.corsProxy, location_1 = options.location;
+                    url = "https://www.crunch.com/locations/" + location_1;
+                    if (corsProxy) {
+                        url = 'https://cors-anywhere.herokuapp.com/' + url;
+                    }
+                    return [4 /*yield*/, fetch(url)];
+                case 1:
+                    response = _b.sent();
+                    return [4 /*yield*/, response.text()];
+                case 2:
+                    data = _b.sent();
+                    $ = cheerio_1.default.load(data);
+                    percentage = (_a = $('#occupancy-info .progress-bar-wrapper .progress-background div').attr('style')) === null || _a === void 0 ? void 0 : _a.split(' ')[1];
+                    if (!percentage) {
+                        throw new Error('Error parsing document');
+                    }
+                    occupancy = parseFloat(percentage) / 100;
+                    return [2 /*return*/, occupancy];
+                case 3:
+                    error_1 = _b.sent();
+                    console.error(error_1);
+                    return [2 /*return*/];
+                case 4: return [2 /*return*/];
+            }
+        });
     });
-}); };
+};
 exports.default = crunchOMeter;
